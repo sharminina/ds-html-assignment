@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>User inf</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="./assets/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <header class="navbar">
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="data.html">Site Data</a>
+            <a href="config.html">Site Configuration</a>
+            <a href="navtabs.html">Add & Show User Info</a>
+            <button id="logout-btn">Sign Out</button>
+
+        </nav>
+    </header>
+    <main>
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'add')">Add user info</button>
+            <button class="tablinks" onclick="openTab(event, 'show'),loadTableData()">Show user info</button>
+
+        </div>
+
+        <div id="add" class="tabcontent active">
+            <h3 class="tab-header">Add user info</h3>
+            <div class="add-user-form">
+                <!--_______-ADD USER FORM---___-->
+
+                <form id="mainForm" autocomplete="on">
+                    <div class="form-group">
+                        <label>Name *</label>
+                        <input type="text" id="name" class="form-input" />
+                        <div class="error" id="error-name"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" id="phone" class="form-input" />
+                        <div class="error" id="error-phone"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Department *</label>
+                        <select id="department" class="form-input">
+                            <option value="">--Select Department--</option>
+                            <option value="HR">HR</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Sales">Sales</option>
+                        </select>
+                        <div class="error" id="error-department"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Skills (Multi-select) *</label>
+                        <select id="skills" multiple size="4" class="form-input">
+                            <option value="HTML">HTML</option>
+                            <option value="CSS">CSS</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="React">React</option>
+                        </select>
+
+                        <div class="error" id="error-skills"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date of Birth *</label>
+                        <input type="date" id="dob" class="form-input" />
+                        <div class="error" id="error-dob"></div>
+                    </div>
+
+                    <div class="form-group" style="position: relative;">
+                        <label>Bio (Autocomplete)</label>
+                        <textarea id="bio" class="form-input"></textarea>
+                        <div id="autocomplete" class="autocomplete-list"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label><input type="checkbox" id="subscribe" /> Subscribe to newsletter</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Employment Status *</label><br />
+                        <label><input type="radio" name="employment" value="Employed" /> Employed</label>
+                        <label><input type="radio" name="employment" value="Unemployed" /> Unemployed</label>
+                        <div class="error" id="error-employment"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date Range (From - To)</label>
+                        <input type="date" id="fromDate" />
+                        <input type="date" id="toDate" />
+                    </div>
+                    <div class="submit-btn-holder">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--DISPLAY THE DATA FILLED ON FORM-->
+        <div id="show" class="tabcontent">
+            <h3 class="tab-header">Show user info</h3>
+            <div class="table-container">
+                <table id="dataTable2">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Department</th>
+                            <th>Skills</th>
+                            <th>DOB</th>
+                            <th>Bio</th>
+                            
+                            <th>Employment</th>
+                            <th>Date Range</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+<!---MODAL FOR EDITING TABLE DATA-->
+<!-- Edit Modal -->
+
+
+    </main>
+    <div id="editModal">
+  <div class="modal-content">
+    <h3>Edit Entry</h3>
+    <form id="editForm">
+      <input type="hidden" id="editIndex" />
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" id="editName" required />
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="text" id="editPhone" required />
+      </div>
+      <div class="form-group">
+        <label>Department</label>
+        <select id="editDepartment" required>
+          <option value="">--Select--</option>
+          <option value="HR">HR</option>
+          <option value="Engineering">Engineering</option>
+          <option value="Sales">Sales</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Skills</label>
+        <select id="editSkills" multiple>
+          <option value="HTML">HTML</option>
+          <option value="CSS">CSS</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="React">React</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>DOB</label>
+        <input type="date" id="editDob" />
+      </div>
+      <div class="form-group">
+        <label>Bio</label>
+        <textarea id="editBio"></textarea>
+      </div>
+      <div class="form-group">
+        <label><input type="checkbox" id="editSubscribe" /> Subscribe</label>
+      </div>
+      <div class="form-group">
+        <label>Employment</label><br/>
+        <label><input type="radio" name="editEmployment" value="Employed" /> Employed</label>
+        <label><input type="radio" name="editEmployment" value="Unemployed" /> Unemployed</label>
+      </div>
+      <div class="form-group">
+        <label>Date Range</label>
+        <input type="date" id="editFromDate" />
+        <input type="date" id="editToDate" />
+      </div>
+      <div class="modal-buttons">
+      <button type="submit" class="view">Save Changes</button>
+      <button type="button" onclick="closeEditModal()" class="delete">Cancel</button>
+   </div>
+    </form>
+  </div>
+</div>
+    <script src="script.js"></script>
+    <script>
+        function openTab(evt, tabName) {
+            let i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].className = "tabcontent";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).className = "tabcontent active";
+            evt.currentTarget.className += " active";
+        }
+
+        /*code for multiselect value show*/
+        function updateSelectedSkillsDisplay() {
+            const checked = document.querySelectorAll('input[name="skills"]:checked');
+            const selected = Array.from(checked).map(cb => cb.value);
+            document.getElementById('selected-skills').textContent = selected.length > 0 ? selected.join(', ') : 'None';
+        }
+    </script>
+
+</body>
+
+</html>

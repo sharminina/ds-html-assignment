@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <link rel="icon" href="./assets/favicon.png" />
+  <title>Site Configuration</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="data.html">Site Data</a>
+      <a href="config.html">Site Configuration</a>
+      <a href="navtabs.html">Add & Show User Info</a>
+      <button id="logout-btn">Sign Out</button>
+    </nav>
+  </header>
+
+  <main>
+    <h2 class="page-title-2">Site Configuration</h2>
+    <diV class="dropdown-holder">
+    <label for="theme-select">Select Theme:</label>
+    <select id="theme-select">
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="colored">Colored</option>
+    </select>
+</diV>
+<div class="dropdown-holder">
+    <label for="nav-select">Select Navigation Style:</label>
+    <select id="nav-select">
+      <option value="top">Top Nav</option>
+      <option value="side">Side Nav</option>
+    </select>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
