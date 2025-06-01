@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+   <link rel="icon" href="./assets/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Site Data Page</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <nav>
+       <a href="home.html">Home</a>
+      <a href="data.html">Site Data</a>
+      <a href="config.html">Site Configuration</a>
+      <a href="navtabs.html">Add & Show User Info</a>
+      <button id="logout-btn">Sign Out</button>
+    </nav>
+  </header>
+
+  <main>
+    <h2 class="page-title-2">Site data</h2>
+     <div class="container">
+   <div><button class="add-user"><a href="navtabs.html">Add new user info</a></button></div>
+    <div class="table-container">
+      <table id="dataTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data will be populated here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

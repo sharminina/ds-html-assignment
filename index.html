@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+     <link rel="icon" href="./assets/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body class="light-theme">
+    <!--Displays login form with an image-->
+    <div class="login-holder">
+       
+        <!--login page image-->
+        <div class="login-img-holder">
+            <img src="./assets/login-concept-illustration.png" alt="Login Image" />
+        </div>
+        <div class="login-container">
+             <h2>Sign in</h2>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Username" required  class="log-input"/>
+                <input type="password" id="password" placeholder="Password" required class="log-input" />
+                <div class="show-password">
+                    <div class="check-holder">
+                    <input type="checkbox" id="togglePassword" class="toggle-password"/>
+                    <span class="checkmark">Show password</span>
+               </div>
+                </div>
+                <div class="remember-me">
+                <button type="submit" class="login-btn">Sign in</button>
+                <p id="error-message"></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
