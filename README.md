@@ -20,4 +20,4 @@ The log out button allows logging out of the application
 
 # how to run the file
 simply extract the zip and run the file index.html.
-Github repo link : 
+Github repo link : https://github.com/sharminina/ds-html-assignment.git
